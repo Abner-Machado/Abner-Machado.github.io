@@ -5,7 +5,8 @@
     {{ if and .Date (eq .Section "posts") }}
       <p class="article__meta">
         <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
-        &nbsp;·&nbsp; {{ .ReadingTime }} min read
+        &nbsp;·&nbsp; {{ .ReadingTime }} min read{{ with .Params.category }}
+        &nbsp;·&nbsp; <span class="tag tag--inline">{{ . }}</span>{{ end }}
       </p>
     {{ end }}
   </header>

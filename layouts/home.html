@@ -1,8 +1,19 @@
 {{ define "main" }}
 <div class="wrap">
   <section class="lede">
-    <h1 class="lede__title">{{ .Title | safeHTML }}</h1>
-    <p class="lede__meta">{{ .Params.subtitle }}</p>
+    <div class="lede__text">
+      <h1 class="lede__title">{{ .Title | safeHTML }}</h1>
+      <p class="lede__meta">{{ .Params.subtitle }}</p>
+    </div>
+    {{ with resources.Get "img/forge.png" }}
+      {{ $c := .Crop "1000x1250 Center" }}
+      {{ $w := $c.Resize "560x webp q80" }}
+      <figure class="plate reveal">
+        <img src="{{ $w.RelPermalink }}" width="{{ $w.Width }}" height="{{ $w.Height }}"
+             alt="A blacksmith at the anvil, shaping hot steel with a hammer, in an aged photographic plate."
+             loading="lazy" decoding="async">
+      </figure>
+    {{ end }}
   </section>
 
   {{ $posts := where site.RegularPages "Section" "posts" }}

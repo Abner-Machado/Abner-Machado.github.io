@@ -1,6 +1,7 @@
 ---
 title: "Most of my agent bill was re-reading the same prompt"
 date: 2026-11-17
+category: "Agent cost and quota"
 description: "I measured thirty days of real coding-agent sessions. Output was 14 percent of the cost. The cached prefix was 84. That changes what is worth optimizing."
 ---
 
