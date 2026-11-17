@@ -1,0 +1,18 @@
+{{ define "main" }}
+<div class="wrap">
+  <section class="lede">
+    <h1 class="lede__title">{{ .Title | safeHTML }}</h1>
+    <p class="lede__meta">{{ .Params.subtitle }}</p>
+  </section>
+
+  {{ $posts := where site.RegularPages "Section" "posts" }}
+  {{ if $posts }}
+    <p class="section-label">Writing</p>
+    <ul class="posts">
+      {{ range first 12 $posts }}{{ partial "post-item.html" . }}{{ end }}
+    </ul>
+  {{ end }}
+
+  {{ with .Content }}<div class="prose" style="margin-top:var(--space-5)">{{ . }}</div>{{ end }}
+</div>
+{{ end }}

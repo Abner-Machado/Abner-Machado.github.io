@@ -1,0 +1,16 @@
+{{ define "main" }}
+<article class="wrap article">
+  <header class="article__header">
+    <h1 class="article__title">{{ .Title }}</h1>
+    {{ if and .Date (eq .Section "posts") }}
+      <p class="article__meta">
+        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
+        &nbsp;·&nbsp; {{ .ReadingTime }} min read
+      </p>
+    {{ end }}
+  </header>
+  <div class="prose">
+    {{ .Content }}
+  </div>
+</article>
+{{ end }}

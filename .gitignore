@@ -1,0 +1,16 @@
+# Hugo build output and caches
+/public/
+/resources/_gen/
+/.hugo_build.lock
+.hugo_build.lock
+
+# Local tooling noise
+.impeccable/
+design-system/
+*.bak
+*.bak-*
+
+# OS
+Thumbs.db
+desktop.ini
+.DS_Store

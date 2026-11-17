@@ -1,0 +1,11 @@
+{{ define "main" }}
+<div class="wrap">
+  <section class="lede">
+    <h1 class="lede__title">{{ .Title }}</h1>
+    {{ with .Params.subtitle }}<p class="lede__meta">{{ . }}</p>{{ end }}
+  </section>
+  <ul class="posts" style="margin-top:var(--space-4)">
+    {{ range .Pages.ByDate.Reverse }}{{ partial "post-item.html" . }}{{ end }}
+  </ul>
+</div>
+{{ end }}

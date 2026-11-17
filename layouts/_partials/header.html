@@ -1,0 +1,29 @@
+<header class="masthead">
+  <div class="wrap masthead__inner">
+    <a class="wordmark" href="/">Abner <em>Machado</em></a>
+    <nav class="nav" aria-label="Main">
+      {{ $current := . }}
+      {{ range site.Params.nav }}
+        <a href="{{ .url }}"{{ if .external }} rel="me noopener"{{ end }}{{ if and (not .external) (hasPrefix $current.RelPermalink .url) (ne .url "/") }} aria-current="page"{{ end }}>{{ .name }}</a>
+      {{ end }}
+    </nav>
+    <button class="theme-toggle" type="button" id="theme-toggle" aria-label="Switch between light and dark theme">
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+    </button>
+  </div>
+</header>
+<script>
+(function () {
+  var btn = document.getElementById('theme-toggle');
+  if (!btn) return;
+  btn.addEventListener('click', function () {
+    var root = document.documentElement;
+    var dark = root.getAttribute('data-theme') === 'dark' ||
+      (root.getAttribute('data-theme') !== 'light' && matchMedia('(prefers-color-scheme: dark)').matches);
+    var next = dark ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch (e) {}
+  });
+})();
+</script>
